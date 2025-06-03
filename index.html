@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2c3e50">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="stylesheet" href="style.css">
-  <title>PWA File Share</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/style.css" />
+  <title>PWA FileShare</title>
 </head>
 <body>
   <header>
-    <h1>📁 PWA File Share</h1>
+    <h1>PWA File Share</h1>
     <nav>
-      <button onclick="showPage('downloads')">📥 Download Files</button>
-      <button onclick="showPage('uploads')">📤 Upload Files</button>
+      <button onclick="showPage('browse')">Browse</button>
+      <button onclick="showPage('upload')">Upload</button>
     </nav>
   </header>
 
   <main>
-    <section id="downloads" class="page">
-      <h2>Available Files</h2>
+    <section id="browse" class="page">
+      <h2>File List</h2>
       <div class="file-types">
         <button onclick="filterFiles('all')">All</button>
         <button onclick="filterFiles('pdf')">PDF</button>
-        <button onclick="filterFiles('xlsx')">Excel</button>
-        <button onclick="filterFiles('docx')">Word</button>
+        <button onclick="filterFiles('xlsx')">XLSX</button>
       </div>
       <table id="file-list">
-        <thead><tr><th>File Name</th><th>Type</th><th>Action</th></tr></thead>
+        <thead>
+          <tr><th>Name</th><th>Type</th><th>Action</th></tr>
+        </thead>
         <tbody></tbody>
       </table>
     </section>
 
-    <section id="uploads" class="page hidden">
-      <h2>Upload a File</h2>
+    <section id="upload" class="page hidden">
+      <h2>Upload File</h2>
       <form id="upload-form">
-        <input type="file" id="file-input" required>
-        <button type="submit">Upload</button>
+        <input type="file" id="file-input" required />
+        <button type="submit">Simulate Upload</button>
       </form>
-      <p class="note">* Simulasi upload: hanya tersimpan lokal sementara</p>
+      <p class="note">Simulasi: file tidak disimpan permanen.</p>
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="/app.js"></script>
 </body>
 </html>
