@@ -1,10 +1,8 @@
-// manifest.json
-{
-  "name": "PWA File Share",
-  "short_name": "FileShare",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#ffffff
+const files = [
+  { name: "report.xlsx", type: "xlsx", url: "/files/report.xlsx" },
+  { name: "summary.pdf", type: "pdf", url: "/files/summary.pdf" }
+];
+
 function renderFiles(filter = 'all') {
   const tbody = document.querySelector("#file-list tbody");
   tbody.innerHTML = '';
@@ -41,18 +39,10 @@ document.getElementById("upload-form").addEventListener("submit", (e) => {
     renderFiles();
     input.value = '';
   }
-",
-  "theme_color": "#2c3e50",
-  "icons": [
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+});
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
 }
+
+window.onload = () => renderFiles();
