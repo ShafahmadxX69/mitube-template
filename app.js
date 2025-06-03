@@ -1,5 +1,5 @@
 const files = [
-  { name: "Laporan Keuangan 2025.xlsx", url: "public/files/data.xlsx" },
+  { name: "Laporan Keuangan 2025.xlsx", url: "files/data.xlsx" },
   { name: "Surat Pengantar.pdf", url: "files/dokumen1.pdf" }
 ];
 
