@@ -8,8 +8,8 @@ self.addEventListener('install', e => {
         '/app.js',
         '/service-worker.js',
         '/manifest.json',
-        '/public/files/data.xlsx',
-        '/public/files/dokumen1.pdf'
+        '/files/data.xlsx',
+        '/files/dokumen1.pdf'
       ]);
     })
   );
