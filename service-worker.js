@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-fileshare-v1';
+const CACHE_NAME = 'MiTube-v1';
 const FILES_TO_CACHE = [
   '/',
   '/index.html',
