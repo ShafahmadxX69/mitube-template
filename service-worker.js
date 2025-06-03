@@ -1,4 +1,3 @@
-
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open('ceisa-files-v1').then(cache => {
