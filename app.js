@@ -1,20 +1,58 @@
-const files = [
-  { name: "Laporan Keuangan 2025.xlsx", url: "files/data.xlsx" },
-  { name: "Surat Pengantar.pdf", url: "files/dokumen1.pdf" }
-];
-
-window.onload = () => {
-  const fileList = document.getElementById("file-list");
+// manifest.json
+{
+  "name": "PWA File Share",
+  "short_name": "FileShare",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff
+function renderFiles(filter = 'all') {
+  const tbody = document.querySelector("#file-list tbody");
+  tbody.innerHTML = '';
   files.forEach(file => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${file.name}</td>
-      <td><a href="${file.url}" download>📥 Unduh</a></td>
-    `;
-    fileList.appendChild(row);
+    if (filter === 'all' || file.type === filter) {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${file.name}</td>
+        <td>${file.type}</td>
+        <td><a href="${file.url}" download>Download</a></td>
+      `;
+      tbody.appendChild(row);
+    }
   });
-};
+}
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js');
+function filterFiles(type) {
+  renderFiles(type);
+}
+
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+  document.getElementById(pageId).classList.remove('hidden');
+}
+
+document.getElementById("upload-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const input = document.getElementById("file-input");
+  const file = input.files[0];
+  if (file) {
+    const ext = file.name.split('.').pop();
+    files.push({ name: file.name, type: ext, url: URL.createObjectURL(file) });
+    alert("File uploaded (simulasi)!");
+    renderFiles();
+    input.value = '';
+  }
+",
+  "theme_color": "#2c3e50",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
